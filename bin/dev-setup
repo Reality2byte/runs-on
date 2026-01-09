@@ -13,8 +13,8 @@ else
 fi
 
 TARGET_ACCOUNT_ID=""
-for ACCOUNT_ID in 966509368716 527743316190; do
-    if aws sts assume-role --role-arn arn:aws:iam::${ACCOUNT_ID}:role/OrganizationAccountAccessRole --role-session-name test --profile $MAIN_PROFILE &>/dev/null; then
+for ACCOUNT_ID in 966509368716 527743316190 457915501354; do
+    if aws sts assume-role --role-arn arn:aws:iam::${ACCOUNT_ID}:role/OrganizationAccountAccessRole --role-session-name test --profile $MAIN_PROFILE; then
         TARGET_ACCOUNT_ID=$ACCOUNT_ID
         break
     fi
