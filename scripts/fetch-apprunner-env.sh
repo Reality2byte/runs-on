@@ -8,7 +8,7 @@ echo "Fetching App Runner service with tag runs-on-stack-name=${STACK_NAME}..."
 
 SERVICE_ARN=""
 for arn in $(aws apprunner list-services --query 'ServiceSummaryList[*].ServiceArn' --output text); do
-    TAG_VALUE=$(aws apprunner list-tags-for-resource --resource-arn "$arn" --query "Tags[?Key=='runs-on-stack-name'].Value" --output text 2>/dev/null || true)
+    TAG_VALUE=$(aws apprunner list-tags-for-resource --resource-arn "$arn" --query "Tags[?Key=='stack'].Value" --output text 2>/dev/null || true)
     if [ "$TAG_VALUE" = "$STACK_NAME" ]; then
         SERVICE_ARN="$arn"
         break
